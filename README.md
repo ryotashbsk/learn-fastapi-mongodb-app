@@ -45,13 +45,16 @@ learn-fastapi-mongodb-app/
 
 ## Python 設定
 
-`pyproject.toml` は Ruff と mypy の設定ファイル。
+`pyproject.toml` は Ruff、ty、pytest、coverage の設定ファイル。
 
 | 設定 | 内容 |
 | --- | --- |
 | `tool.ruff.lint.ignore` | このサンプルでの Ruff ルール無視対象 |
 | `tool.ruff.format.quote-style` | 文字列引用符を single quote に統一 |
-| `tool.mypy.python_version` | 型チェック対象の Python バージョン |
+| `tool.ty.environment.python-version` | 型チェック対象の Python バージョン |
+| `tool.ty.src.include` | 型チェック対象 |
+| `tool.pytest.ini_options.testpaths` | pytest のテスト探索対象 |
+| `tool.coverage.run.source` | coverage の計測対象 |
 
 ## ローカルセットアップ
 
@@ -97,6 +100,18 @@ VS Code では、実行とデバッグの `FastAPI アプリを起動` を利用
 
 開発用ツールを追加済みの場合に利用。
 
+pre-commit hook の有効化。
+
+```bash
+uv run pre-commit install
+```
+
+品質チェック一式。
+
+```bash
+uv run pre-commit run --all-files
+```
+
 コードフォーマット。
 
 ```bash
@@ -112,7 +127,20 @@ uv run ruff check .
 型チェック。
 
 ```bash
-uv run mypy app.py
+uv run ty check
+```
+
+テスト。
+
+```bash
+uv run pytest
+```
+
+カバレッジ。
+
+```bash
+uv run coverage run -m pytest
+uv run coverage report
 ```
 
 ## 動作確認
