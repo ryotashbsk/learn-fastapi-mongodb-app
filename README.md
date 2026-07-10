@@ -10,11 +10,11 @@ FastAPI から MongoDB の `items` collection を読み取る JSON API サンプ
 
 ## 前提
 
-| ツール | 用途 |
-| --- | --- |
-| uv | Python と仮想環境、依存パッケージの管理 |
-| Docker Compose | ローカル MongoDB の起動 |
-| MongoDB Compass | MongoDB のデータ確認 |
+| ツール          | 用途                                    |
+| --------------- | --------------------------------------- |
+| uv              | Python と仮想環境、依存パッケージの管理 |
+| Docker Compose  | ローカル MongoDB の起動                 |
+| MongoDB Compass | MongoDB のデータ確認                    |
 
 ## ファイル構成
 
@@ -37,24 +37,24 @@ learn-fastapi-mongodb-app/
 
 ## エンドポイント
 
-| メソッド | URL | 概要 |
-| --- | --- | --- |
-| GET | `http://localhost:8080/` | アプリのメッセージ |
-| GET | `http://localhost:8080/health` | MongoDB への接続状態 |
-| GET | `http://localhost:8080/items` | `items` collection のデータ |
+| メソッド | URL                            | 概要                        |
+| -------- | ------------------------------ | --------------------------- |
+| GET      | `http://localhost:8080/`       | アプリのメッセージ          |
+| GET      | `http://localhost:8080/health` | MongoDB への接続状態        |
+| GET      | `http://localhost:8080/items`  | `items` collection のデータ |
 
 ## Python 設定
 
 `pyproject.toml` は Ruff、ty、pytest、coverage の設定ファイル。
 
-| 設定 | 内容 |
-| --- | --- |
-| `tool.ruff.lint.ignore` | このサンプルでの Ruff ルール無視対象 |
-| `tool.ruff.format.quote-style` | 文字列引用符を single quote に統一 |
-| `tool.ty.environment.python-version` | 型チェック対象の Python バージョン |
-| `tool.ty.src.include` | 型チェック対象 |
-| `tool.pytest.ini_options.testpaths` | pytest のテスト探索対象 |
-| `tool.coverage.run.source` | coverage の計測対象 |
+| 設定                                 | 内容                                 |
+| ------------------------------------ | ------------------------------------ |
+| `tool.ruff.lint.ignore`              | このサンプルでの Ruff ルール無視対象 |
+| `tool.ruff.format.quote-style`       | 文字列引用符を single quote に統一   |
+| `tool.ty.environment.python-version` | 型チェック対象の Python バージョン   |
+| `tool.ty.src.include`                | 型チェック対象                       |
+| `tool.pytest.ini_options.testpaths`  | pytest のテスト探索対象              |
+| `tool.coverage.run.source`           | coverage の計測対象                  |
 
 ## ローカルセットアップ
 
@@ -100,43 +100,43 @@ VS Code では、実行とデバッグの `FastAPI アプリを起動` を利用
 
 開発用ツールを追加済みの場合に利用。
 
-pre-commit hook の有効化。
+### pre-commit hook の有効化
 
 ```bash
 uv run pre-commit install
 ```
 
-品質チェック一式。
+### 品質チェック一式
 
 ```bash
 uv run pre-commit run --all-files
 ```
 
-コードフォーマット。
+### コードフォーマット
 
 ```bash
 uv run ruff format .
 ```
 
-lint。
+### lint
 
 ```bash
 uv run ruff check .
 ```
 
-型チェック。
+### 型チェック
 
 ```bash
 uv run ty check
 ```
 
-テスト。
+### テスト
 
 ```bash
 uv run pytest
 ```
 
-カバレッジ。
+### カバレッジ
 
 ```bash
 uv run coverage run -m pytest
@@ -145,19 +145,19 @@ uv run coverage report
 
 ## 動作確認
 
-FastAPI の Swagger UI。
+### FastAPI の Swagger UI
 
 ```txt
 http://localhost:8080/docs
 ```
 
-MongoDB への接続状態。
+### MongoDB への接続状態
 
 ```bash
 curl http://localhost:8080/health
 ```
 
-`items` collection のデータ。
+### `items` collection のデータ
 
 ```bash
 curl http://localhost:8080/items
