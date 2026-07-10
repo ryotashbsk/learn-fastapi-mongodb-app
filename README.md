@@ -58,37 +58,37 @@ learn-fastapi-mongodb-app/
 
 ## ローカルセットアップ
 
-ローカル実行用の環境変数ファイル。
+### ローカル実行用の環境変数ファイル
 
 ```bash
 cp .env.example .env
 ```
 
-Python 3.11 の仮想環境。
+### Python 3.11 の仮想環境
 
 ```bash
 uv venv --python 3.11
 ```
 
-`.venv` への依存パッケージ追加。
+### `.venv` への依存パッケージ追加
 
 ```bash
 uv pip install -r requirements.txt
 ```
 
-開発用ツールの追加。
+### 開発用ツールの追加
 
 ```bash
 uv pip install -r requirements-dev.txt
 ```
 
-MongoDB コンテナのバックグラウンド起動。
+### MongoDB コンテナのバックグラウンド起動
 
 ```bash
 docker compose up -d mongo
 ```
 
-uvicorn による FastAPI アプリ起動。
+### uvicorn による FastAPI アプリ起動
 
 ```bash
 uv run uvicorn app:app --host 0.0.0.0 --port 8080 --reload
